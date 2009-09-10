@@ -1,0 +1,11 @@
+#!/bin/sh
+# NOTE:  This demo script is too simple for most environments.  A full-fledged
+# get_arch is needed.  It would most likely use more uname results in
+# combination with architecture-specific files such as /etc/redhat-release and
+# /usr/bin/isainfo (SunOS).
+# Get the kernel name
+kernelName=`uname --kernel-name`
+# Get the machine hardware name
+machine=`uname --machine`
+# Return the arch
+echo $kernelName.$machine

@@ -1,0 +1,34 @@
+The calc app is from the IBM Systems Information Center:
+
+  http://publib.boulder.ibm.com/infocenter/systems/index.jsp?topic=/com.ibm.aix.genprogc/doc/genprogc/ie_prog_4lex_yacc.htm
+
+The names of the lex and yacc files were changed because this Makefile system
+does not support them having the same basename (the original names were calc.lex
+and calc.yacc).
+
+The following is from the URL listed above:
+
+  This section contains example programs for the lex and yacc commands.
+  Together, these example programs create a simple, desk-calculator program that
+  performs addition, subtraction, multiplication, and division operations.  This
+  calculator program also allows you to assign values to variables (each
+  designated by a single, lowercase letter) and then use the variables in
+  calculations.
+  .
+  .
+  .
+  ... after you start the program, the cursor moves to the line below the
+  $(command prompt).  Then, enter numbers and operators as you would on a
+  calculator.  When you press the Enter key, the program displays the result of
+  the operation.  After you assign a value to a variable, as follows, the cursor
+  moves to the next line.
+  
+    m=4 <enter>
+    _
+  
+  When you use the variable in subsequent calculations, it will have the
+  assigned value: 
+  
+    m+5 <enter>
+    9
+    _

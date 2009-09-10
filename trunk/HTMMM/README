@@ -1,0 +1,42 @@
+The nonrecursive method is based on the work of Peter Miller and Robert
+Mecklenburg (Ch. 6).  Also, the automatic dependency generation for the apps and
+the libs is based on the same work of Robert Mecklenburg (Ch. 6).
+
+The advanced method of fully-automatic dependency generation for the objects is
+based on the work of Tom Tromey and Paul Smith.
+
+The compiler-option dependency method is based on the Linux Kernel Makefile, as
+described by Robert Mecklenburg (Ch. 11).
+
+The OBJDIR method is based on the work of Paul Smith.
+
+The command-echo management method is based on the Linux Kernel Makefile, as
+described by Robert Mecklenburg (Ch. 11).
+
+The debug mode method uses the GMSL and the GMD of John Graham-Cumming.
+
+Graham-Cumming, John
+	GNU Make Standard Library (GMSL)
+	http://gmsl.sourceforge.net/
+
+	GNU Make Debugger (GMD)
+	http://gmd.sourceforge.net/
+
+Mecklenburg, Robert
+	Managing Projects with GNU Make
+	http://www.oreilly.com/catalog/make3/index.html
+
+Miller, Peter
+	Recursive Make Considered Harmful
+	http://aegis.sourceforge.net/auug97.pdf
+
+Smith, Paul
+	Multi-Architecture Builds Using GNU make
+	http://make.paulandlesley.org/multi-arch.html
+
+Tromey, Tom, and Smith, Paul
+	Advanced Auto-Dependency Generation
+	http://make.paulandlesley.org/autodep.html
+
+
+For further information please send an e-mail to steve.siano@yahoo.com.

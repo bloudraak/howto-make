@@ -1,0 +1,47 @@
+### If the dir is used to build an app or lib, then the Makefile needs the
+### following lines (not including the ones starting with "##"):
+# For help, see HTMMM/Makefile.README
+
+# Do Not Edit
+## Use HTMMM/chdir.mk to run Make from the OBJDIR.
+ifndef _PARSE
+srchup = $(or $(wildcard $1/$2),$(if $(notdir $(abspath $1)),$(call srchup,../$1,$2),$(info $2 not found.)))
+include $(call srchup,.,HTMMM/chdir.mk)
+endif
+
+# Edit Values Only
+## Set the type (app or lib) and name (without a path) of this dir's final
+## target.  The name value for a static lib should be libName.a and for a
+## dynamic lib should be libName.so or libName.dll for single-architecture
+## builds or libName.$(shared) for multi-architecture builds.  This Makefile is
+## for building a single app or lib from this dir.  All of the source files must
+## be in this dir.  You may use the inc_dirs variables defined in HTMMM/ivars.mk
+## and the use_libs variables defined in HTMMM/lvars.mk.  The private inc_dirs
+## should be specified relative to the root dir (SRCDIR) since the
+## "-I$(SRCDIR)/" prefix will be added by load_macro in HTMMM/macrs.mk.  The
+## use_libs should be specified with the "-l" notation (see HTMMM/lvars.mk).
+type     := app
+name     := Abh
+inc_dirs :=
+use_libs :=
+
+# Add, Remove, and Edit Directory-Specific Variables and Values
+## For more info, see HTMMM/macrs.mk, HTMMM/flags.mk, and HTMMM/cplrs.mk.  If
+## any of a dir's source files depend on header files that are co-generated with
+## gsrc from another dir, then you must set other_gsrc to the gsrc list.  This
+## will ensure, during a clean build, that the header files exist before this
+## dir is built.  For example, if source in this app dir depend on
+## lib/foo/bar.h, which is co-generated with lib/foo/bar.cpp from
+## lib/foo/bar.xpp, then set other_gsrc as shown below.
+other_gsrc   := lib/foo/bar.h
+add_cppflags := -Dfoo=Abh_cppflags
+## NOTE TO THE DEVELOPER:  This file is only for setting directory-specific
+## variables such as the flags, which are edited with the add_/rem_/set_ syntax,
+## as well as type, name, inc_dirs, use_libs, and other_gsrc.  If you assign a
+## value to any other variable, it will be used globally.  Global assignments
+## should only be done in the HTMMM dir.
+## NOTE TO THE BUILDMASTER:  The Makefile syntax after the "endif" above will be
+## parsed after the Make has been run from the OBJDIR, i.e., after the Make has
+## completed.  This extraneous parsing is harmless.  If desired, the extraneous
+## parsing can be eliminated by replacing the "endif" above with an "else" and
+## placing an "endif" at the end of this file.

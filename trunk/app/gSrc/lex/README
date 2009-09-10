@@ -1,0 +1,5 @@
+The count_words app takes no args.  It processes text and counts the occurrences
+of the words fee, fie, foe, and fum.
+
+You can either pipe text into it or execute it and type text (use CTRL-D to
+quit).

@@ -1,0 +1,24 @@
+The spec files in this dir are for building binary RPMs.  They are not for building
+source RPMs.
+
+Also, the rpmbuild that uses the spec files does not use a .rpmmacros file.
+
+%prep
+In many cases you only need binary RPMs.  In these cases, you can save time by
+not copying the source tree to $RPM_BUILD_DIR.
+
+%build
+Because the source tree is not copied, the build is started with "make -C
+%{_topdir}/../..".  The T and RELDIR variables of the HTMMM Makefile system may
+be used to do a partial build.  This is useful when your source tree is used for
+building multiple RPMs.
+
+%install
+Like the build, the install uses "make -C %{_topdir}/../..".  The
+$RPM_BUILD_ROOT is cleaned out before the install to ensure a fresh install for
+every rpmbuild.
+
+%clean
+Since $RPM_BUILD_ROOT is cleaned out before the install, it is safe to do
+nothing here.  Also, this allows you to examine the $RPM_BUILD_ROOT tree after
+running rpmbuild.

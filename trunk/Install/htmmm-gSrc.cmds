@@ -1,0 +1,5 @@
+install:
+	$(cmd_files) $(OBJDIR)/app/gSrc/lexAndYacc/calc $(RPM_BUILD_ROOT)/usr/local/bin/calcLY
+	$(cmd_files) app/gSrc/lex/README                $(RPM_BUILD_ROOT)/usr/local/share/README_L
+	$(cmd_files) app/gSrc/lexAndYacc/README         $(RPM_BUILD_ROOT)/usr/local/share/README_LY
+

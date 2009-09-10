@@ -1,0 +1,56 @@
+HOW TO ADD A FILE TO A PACKAGE FOR INSTALLATION
+
+1. THE PACKAGING AND DIST DOCUMENTATION ARE IN THE TOP-LEVEL Dist.mk
+
+Dist.mk calls Package.mk for each package, and Package.mk calls rpmbuild, which
+calls Make and "make -f Install.mk".  Package.mk and Install.mk also contain
+documentation.
+
+In general, you do not need to edit Install.mk, Package.mk, and Dist.mk.  You
+will also not need to edit a subdir Makefile since there is no "make install".
+This is because all of the installation and packaging information has been
+consolidated in the Install and rpm/SPECS dirs.
+
+
+2. FILES THAT YOU WILL EDIT
+In general, to add a file to a package you will only need to edit
+Install/<package>.files and rpm/SPECS/<package>.spec.
+
+In Install/<package>.files, add a line of the form
+
+  install_dir += path_to_file/filename
+
+install_dir is where the file is installed (the initial "/" is not specified).
+
+path_to_file is either $(OBJDIR)/path_to_file for build objects or path_to_file
+(relative to this dir) for files installed from the source tree, such as doc and
+config files.
+
+In rpm/SPECS/<package>.spec, add a line to the %files section of the form
+
+  /install_dir/filename
+
+
+3. FILES THAT YOU WILL EDIT FOR RENAMES
+
+To install a file with a new name, you must edit Install/<package>.cmds,
+rpm/SPECS/<package>.spec, and Package.mk, and you might need to edit
+Install/<package>.files.
+
+In Install/<package>.cmds, add a line of the form
+
+  $(cmd_files) path_to_file/filename $(RPM_BUILD_ROOT)/install_dir/new_filename
+
+In rpm/SPECS/<package>.spec, add a line to the %files section of the form
+
+  /install_dir/new_filename
+
+In Package.mk, add a line to the package's renames section of the form
+
+  renames += path_to_file/filename
+
+In Install/<package>.files, if the install_dir is not already present then to
+ensure that the install_dir gets created under $RPM_BUILD_ROOT add a line of the
+form
+
+  install_dir +=
