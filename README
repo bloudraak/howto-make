@@ -1,0 +1,49 @@
+This README provides general information about the Makefile and packaging
+systems.  The Makefile documentation begins in the top-level Makefile.  You may
+want to start there and read this later.
+
+The packaging documentation is in Install/README, Dist.mk, Package.mk, and
+Install.mk.  Generally you will use Dist.mk ("make -f Dist.mk"), which invokes
+Package.mk for each package.  Package.mk in turn calls rpmbuild, which invokes
+the top-level Makefile and Install.mk.
+
+This Makefile system requires GNU Make 3.81 or better (GNU Make 3.81 was
+released April 1, 2006).  This Makefile system's fully-automatic dependency
+generation feature is based on GCC 3.0 or better (GCC 3.0 was released June 18,
+2001).  This feature is implemented in part by combining compilation and
+dependency generation in a single call to the compiler, which became possible in
+GCC 3.0.  Other compilers can be used by modifying the Make rules.
+
+The packaging system is provided to show how to set the packages dependencies.
+Other packaging systems can be used in a similar fashion.  Use of the package
+dependencies is a two-step process (make followed by "make -f Dist.mk").  This
+is because a package only depends on its contents.  So if you touch a header
+file that is not part of the package, then you must first build so that the
+package contents that depend on the header file become newer than the existing
+package.  For production runs you'll probably run "make -f Dist.mk clean"
+followed by "make -f Dist.mk".
+
+This Makefile system uses John Graham-Cumming's GNU Make Standard Library (GMSL)
+and GNU Make Debugger (GMD).  These are not required to implement the features
+of this Makefile system.  The GMSL and GMD are used because they are too good to
+ignore and because they will make it easier to extend this Makefile system for
+special cases.  For a full list of citations see HTMMM/README.
+
+This Makefile system includes a few small, simple demo apps.  These are included
+to guide you in adding your large, sophisticated apps.  The Makefiles should not
+need to be modified to accommodate larger, more sophisticated apps.  In fact,
+this Makefile system has been implemented as is for a very large and very
+sophisticated set of apps.  Once you are comfortable with this Makefile system,
+you should remove the demo apps.
+
+This Makefile system does not incorporate autoconf.  Multi-architecture builds
+are handled in part through HTMMM/_arch.mk.  You will probably need to tweak the
+Makefiles for your environment.  For example, in the MinGW environment you may
+get errors like
+
+  *** No rule to make target `-lfl', needed by `app/gSrc/lex/count_words'.
+  *** No rule to make target `-ly', needed by `app/gSrc/lexAndYacc/calc'.
+
+One quick solution if you aren't interested in lex and yacc is to just remove
+the app/gSrc dir.  Another is to rename the Makefiles in app/gSrc/lex and
+app/gSrc/lexAndYacc.
