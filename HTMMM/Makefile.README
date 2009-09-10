@@ -1,0 +1,10 @@
+If the dir is used to build an app or lib, use
+
+   HTMMM/Makefile.standard.README
+   HTMMM/Makefile.standard.template
+
+If the dir is not used to build an app or lib, but contains a subdir that is
+used to build an app or a lib, use
+
+   HTMMM/Makefile.notarget.README
+   HTMMM/Makefile.notarget.template

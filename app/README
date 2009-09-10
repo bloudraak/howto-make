@@ -1,0 +1,35 @@
+This file explains the logic behind the demo apps included in this Makefile
+system.
+
+Following are the apps and their location relative to this dir.
+
+  Dir               App
+  ---------------   ----------
+  case/AB           AB
+  case/AB/Abh       Abh
+  case/CD           CD
+  case/EF           EF
+  CPP               hello
+  gSrc/lex          count_words
+  gSrc/lexAndYacc   calc
+
+AB was written in C.
+
+Abh shows that an app dir can have subdirs.
+
+AB and Abh both use the $(ABG) variable, which is defined in HTMMM/lvars.mk.
+
+CD uses one lib that AB and Abh use and one that AB and Abh don't use.
+
+EF uses a shared lib (libcaseEF.so or libcaseEF.dll).
+
+hello was written in C++.  The use of gcc and g++ is determined automatically
+based on the source file extension.
+
+count_words uses a C file and a generated C file from lex, which creates a
+source file from a lex file.
+
+calc uses a generated C file from lex and another one from yacc, which creates
+both a source file and a header file from a yacc file.  Parallel make still
+works even in this case of a prerequisite having multiple targets (normally a
+target has one or more prerequisites).

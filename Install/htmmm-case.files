@@ -1,0 +1,5 @@
+usr/local/bin += $(OBJDIR)/app/case/AB/AB
+usr/local/bin += $(OBJDIR)/app/case/AB/Abh/Abh
+usr/local/bin += $(OBJDIR)/app/case/CD/CD
+usr/local/bin += $(OBJDIR)/app/case/EF/EF
+usr/local/lib += $(sort $(shell [ ! -e $(OBJDIR)/lib ] || find $(OBJDIR)/lib -name '*.so.*' -type f))
