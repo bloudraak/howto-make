@@ -1,7 +1,5 @@
 #summary A New Makefile System - How To Make Make Make (HTMMM)
 
-*A New Makefile System - How To Make Make Make (HTMMM)*
-
 HTMMM was developed to fix what may be the most frustrating aspect of software development - the build.  It is rare for developers on large projects to be able to do quick, accurate incremental builds.  And this situation persists even though almost everyone in software believes that a good incremental build would vastly increase productivity.  Thus many replacements for Make have been developed, but none have proven entirely satisfactory.
 
 But many of the features of good builds have been implemented in Makefiles and published.  These include the work of Robert Mecklenburg, Peter Miller, Paul Smith, and Tom Tromey (for citations see HTMMM/README in the Makefile system).  The goal of this project was to combine their efforts and add additional features in a Makefile system that was easy to implement and maintain.
