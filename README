@@ -29,12 +29,11 @@ of this Makefile system.  The GMSL and GMD are used because they are too good to
 ignore and because they will make it easier to extend this Makefile system for
 special cases.  For a full list of citations see HTMMM/README.
 
-This Makefile system includes a few small, simple demo apps.  These are included
-to guide you in adding your large, sophisticated apps.  The Makefiles should not
-need to be modified to accommodate larger, more sophisticated apps.  In fact,
-this Makefile system has been implemented as is for a very large and very
-sophisticated set of apps.  Once you are comfortable with this Makefile system,
-you should remove the demo apps.
+This Makefile system includes a few small demo apps to guide you in adding your
+own apps.  The Makefiles should not need to be modified to accommodate larger
+apps.  In fact, this Makefile system has been implemented as is for very large
+source trees.  Once you are comfortable with this Makefile system, you should
+remove the demo apps.
 
 This Makefile system does not incorporate autoconf.  Multi-architecture builds
 are handled in part through HTMMM/_arch.mk.  You will probably need to tweak the
