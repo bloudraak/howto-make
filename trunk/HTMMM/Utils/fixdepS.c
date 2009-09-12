@@ -1,7 +1,22 @@
 /*
+ * Copyright 2009, Steven A. Siano
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  * This file is fixdepS.c.  It is a simplified fixdep.c.  This simplified
  * version should build on non-POSIX systems since it does not use memory
- * mapping (and does need to #include <sys/mman.h>).  Also, this simplified
+ * mapping (and does not need to #include <sys/mman.h>).  Also, this simplified
  * version does not include the functionality for dealing with the autoconf
  * issues of the Linux kernel build.
  *

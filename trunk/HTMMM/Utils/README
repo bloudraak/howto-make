@@ -1,0 +1,17 @@
+The wcfind utility should be used with Subversion and CVS.  It is specified in
+HTMMM/utils.mk, and is from
+
+	http://svn.collab.net/viewvc/svn/trunk/tools/client-side/wcfind?revision=38997&view=markup 
+
+For newer revisions, check
+
+	http://svn.collab.net/viewvc/svn/trunk/tools/client-side/wcfind?view=log
+
+The wcgrep utility is not used in this Makefile system, but was included because
+it will speed up your troubleshooting when using Subversion or CVS.  It is from
+
+	http://svn.collab.net/viewvc/svn/trunk/contrib/client-side/wcgrep?revision=37717&view=markup
+
+For newer revisions, check
+
+	http://svn.collab.net/viewvc/svn/trunk/contrib/client-side/wcgrep?view=log
