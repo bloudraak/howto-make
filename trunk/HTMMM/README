@@ -13,7 +13,10 @@ The OBJDIR method is based on the work of Paul Smith.
 The command-echo management method is based on the Linux Kernel Makefile, as
 described by Robert Mecklenburg (Ch. 11).
 
-The debug mode method uses the GMSL and the GMD of John Graham-Cumming.
+The debug mode method uses the GMSL and the GMD of John Graham-Cumming.  The
+GMSL version is 1.0.11 (see HTMMM/__gmsl) and the GMD version is 1.0.2 (see
+HTMMM/gmd).  The "include gmsl" line was commented out in HTMMM/gmd since both
+the GMSL and the GMD are included in the top-level Makefile.
 
 Graham-Cumming, John
 	GNU Make Standard Library (GMSL)
