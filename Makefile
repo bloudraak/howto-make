@@ -171,16 +171,17 @@ include $(SRCDIR)/HTMMM/utils.mk # Utilities
 
 # Check T and RELDIR (these are set in HTMMM/chdir.mk when doing a partial build
 # from a subdir).
-$(if $(T),$(call assert,$(filter 1 2 3 4 5,$(T)),If set T must equal 1 2 3 4 or 5))
+$(if $(T),$(call assert,$(filter 1 2 3 4 5,$(T)),If T is set it must equal 1 2 3 4 or 5))
 $(if $(RELDIR),$(call assert,$(filter 1 2 3 4,$(T)),Must set T to 1 2 3 or 4 when RELDIR is set))
 $(if $(filter 1 2 3 4,$(T)),$(call assert,$(RELDIR),Must set RELDIR when T is 1 2 3 or 4))
 
 # Check that only one of O, G, P, and CT are defined.
 $(call assert,$(call eq,1,$(words $(O) $(G) $(P) $(CT))),Must only set one of O G P CT)
 
-# Get the list of Makefiles.
+# Get the lists of Makefiles and extra Makefiles.
 mfls := $(sort $(shell $(FIND) $(SRCDIR)/app $(SRCDIR)/lib -name Makefile))
-include $(SRCDIR)/HTMMM/fltr1.mk # Filter the Makefiles if T is 1 or 3
+efls := $(sort $(shell $(FIND) $(SRCDIR)/app $(SRCDIR)/lib -name 'Makefile.[0-9]*'))
+include $(SRCDIR)/HTMMM/fltr1.mk # Filter the Makefiles and extra Makefiles if T is 1 or 3
 
 # Make the dirs in $(OBJDIR), and use these dirs to set vpath directives, unless
 # the goal (the command-line target) is clean or one of its variants.
@@ -199,6 +200,7 @@ libs :=
 objs :=
 gsrc :=
 include $(SRCDIR)/HTMMM/incld.mk # Process the subdir Makefiles
+include $(SRCDIR)/HTMMM/repck.mk # Check for replicates if efls were found
 
 # Include the deps files unless the goal (the command-line target) is clean or
 # one of its variants.
@@ -252,11 +254,12 @@ endif
 #   4  subtree     Y                      N          Y
 #   5  whole tree  NA                     N          N
 #
-# The Makefiles that are filtered are the subdir Makefiles from the $(mfls)
-# list.  These are filtered in HTMMM/fltr1.mk.  The lists that are filtered are
-# $(apps), $(libs), $(objs), and $(gsrc).  These are filtered in HTMMM/fltr2.mk.
-# Filtering the Makefiles also results in filtered lists, i.e., the lists will
-# not contain the values from the dirs that were not parsed.
+# The Makefiles that are filtered are the subdir Makefiles from the $(mfls) list
+# and the subdir extra Makefiles from the $(efls) list.  These are filtered in
+# HTMMM/fltr1.mk.  The lists that are filtered are $(apps), $(libs), $(objs),
+# and $(gsrc).  These are filtered in HTMMM/fltr2.mk.  Filtering the Makefiles
+# also results in filtered lists, i.e., the lists will not contain the values
+# from the dirs that were not parsed.
 #
 # From a subdir, RELDIR and a default value of T are set automatically, so you
 # will normally only use "make" and "make T=5".

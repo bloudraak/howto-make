@@ -7,4 +7,4 @@ define include_mfl
 endef
 
 # Include the subdir Makefiles, each with pre- and post-processing.
-$(call map,include_mfl,$(mfls))
+$(call map,include_mfl,$(mfls) $(efls))

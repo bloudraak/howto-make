@@ -8,9 +8,9 @@ endif
 
 # Edit Values Only
 type     := lib
-name     := libcaseG.a
-src      := g.c
+name     := libcaseGCaps2.a
 inc_dirs :=
 use_libs :=
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
+add_cppflags := -DCAPS2=1

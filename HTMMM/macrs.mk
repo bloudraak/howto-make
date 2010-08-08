@@ -9,6 +9,7 @@
 define clear_dir_vars
   type          :=
   name          :=
+  src           :=
   inc_dirs      :=
   use_libs      :=
   other_gsrc    :=
@@ -44,7 +45,10 @@ endef
 # the names of the gsrc and objs to the lists defined in the root-dir Makefile.
 # This macro also sets directory-specific variables.
 define load_macro
-  local_src  := $$(patsubst $(SRCDIR)/%,%,$$(wildcard $(SRCDIR)/$(sd)/*.[clxy] $(SRCDIR)/$(sd)/*.[cx]pp $(SRCDIR)/$(sd)/*.cc))
+  local_src  := $$(if $(src),                                                                             \
+                  $$(addprefix $(sd)/,$(src)),                                                            \
+                  $$(patsubst $(SRCDIR)/%,%,                                                              \
+                    $$(wildcard $(SRCDIR)/$(sd)/*.[clxy] $(SRCDIR)/$(sd)/*.[cx]pp $(SRCDIR)/$(sd)/*.cc)))
   local_gsrc := $$(call get_gsrc,$$(local_src))
   local_objs := $$(call get_objs,$$(local_src))
   gsrc       += $$(local_gsrc)

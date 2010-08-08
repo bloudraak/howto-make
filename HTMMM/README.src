@@ -1,0 +1,52 @@
+This Makefile system supports multiple libs per lib dir and multiple apps per
+app dir.  In any dir with multiple libs or apps, the src variable must be used
+in all of the Makefiles, and no source file can be specified in more than one
+src variable.  This Makefile will report an error if either rule is not
+followed.
+
+Instead, soft links should be used to ensure that every source file is compiled
+from it's Makefile's dir and that every source file has a unique name (including
+its path relative to the root dir).  Thus, when soft-linking to a file in the
+same dir, the file must be renamed, but when soft-linking to a file from another
+dir, the file does not need to be renamed.
+
+If it is desired to use the same source file in multiple apps in an app dir,
+then the source file should be part of a lib (or two libs if different flags
+will be used).
+
+If it is desired to use the main source file to build multiple apps in an app
+dir, with different flags, then a rename soft link should be used in the same
+dir or another app dir should be created and a soft link should be used.
+
+These requirements are different from those of traditional Makefile systems, but
+they do not require additional effort.  This can be understood by comparing the
+handling of these cases for both traditional Makefile systems and this Makefile
+system.
+
+Case 1, Using a Source File from Another Dir
+  Traditional Makefile System
+    If it is built in the other dir, you'll need a special rule to rename the
+	target or to use a subdir (to avoid having a double target)
+    If it is built in the current dir, you'll need a special rule
+  This Makefile System
+    Use a soft link
+
+Case 2, Using the Same Source File Multiple Times in a Dir
+  Traditional Makefile System
+    You'll need a special rule to rename the target or to use a subdir (to avoid
+	having a double target)
+  This Makefile System
+    Use a soft link with a rename
+
+The use of the src variable is shown in
+
+app/case/CD/Makefile
+app/case/CD/Makefile.2
+app/case/EF/Makefile
+app/case/EF/Makefile.2
+lib/goodbye/caseG/Makefile
+lib/goodbye/caseG/Makefile.2
+
+Each of the three dirs above contains a soft link, as does
+
+lib/goodbye/caseGCaps2
