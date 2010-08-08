@@ -6,6 +6,11 @@
 
 int main(void)
 {
+#if   defined( ALT1 )
+	printf("%s was preprocessed with ALT1 defined.\n", __FILE__);
+#elif defined( ALT2 )
+	printf("%s was preprocessed with ALT2 defined.\n", __FILE__);
+#endif
 	char x;
 	printf("Enter c or d: ");
 	scanf("%c", &x);

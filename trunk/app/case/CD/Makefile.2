@@ -7,10 +7,12 @@ include $(call srchup,.,HTMMM/chdir.mk)
 endif
 
 # Edit Values Only
-type     := lib
-name     := libcaseG.a
-src      := g.c
+type     := app
+name     := CDAlt1
+src      := CDAlt1.c
 inc_dirs :=
-use_libs :=
+use_libs := -lcaseCD -lcaseGCaps1
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
+add_cppflags := -DALT1=1
+add_cflags   := -DCD_add_cflags

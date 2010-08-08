@@ -5,10 +5,11 @@
 # Evaluated after the parsing of each subdir Makefile to get the subdir name
 # relative to the root dir (SRCDIR).  For example, this function will return
 # foo/bar if the root-dir Makefile is in /a/b/c and the subdir Makefile is in
-# /a/b/c/foo/bar.
-subdir =                             \
-  $(patsubst $(SRCDIR)/%/Makefile,%, \
-    $(lastword $(MAKEFILE_LIST)))
+# /a/b/c/foo/bar.  This function also works for the extra Makefiles, i.e.,
+# Makefile.[0-9]*.
+subdir =                                      \
+  $(patsubst $(SRCDIR)/%/Makefile,%,          \
+    $(basename $(lastword $(MAKEFILE_LIST))))
 
 # $(call get_gsrc,src)
 # Used by load_macro in HTMMM/macrs.mk to generate a gsrc list from a source

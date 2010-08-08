@@ -9,8 +9,9 @@ endif
 # Edit Values Only
 type     := app
 name     := EF
+src      := EF.c
 inc_dirs :=
-use_libs := -lcaseEF -lcaseG
+use_libs := -lcaseEF -lcaseGCaps2
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
 add_ldflags := -DEF_add_ldflags

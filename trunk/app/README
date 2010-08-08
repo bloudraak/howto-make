@@ -8,7 +8,9 @@ Following are the apps and their location relative to this dir.
   case/AB           AB
   case/AB/Abh       Abh
   case/CD           CD
+  case/CD           CDAlt1
   case/EF           EF
+  case/EF           CDAlt2
   CPP               hello
   gSrc/lex          count_words
   gSrc/lexAndYacc   calc
@@ -19,9 +21,15 @@ Abh shows that an app dir can have subdirs.
 
 AB and Abh both use the $(ABG) variable, which is defined in HTMMM/lvars.mk.
 
-CD uses one lib that AB and Abh use and one that AB and Abh don't use.
+CD and CDAlt1 show that an app dir can have two apps (see HTMMM/README.src).
 
 EF uses a shared lib (libcaseEF.so or libcaseEF.dll).
+
+CDAlt2 shows that an app dir can use a source file from another dir (see
+HTMMM/README.src).
+
+AB and Abh use libcaseG.a, CD and CDAlt1 use libcaseGCaps1.a, and EF and CDAlt2
+use libcaseGCaps2.a (see HTMMM/README.src).
 
 hello was written in C++.  The use of gcc and g++ is determined automatically
 based on the source file extension.
