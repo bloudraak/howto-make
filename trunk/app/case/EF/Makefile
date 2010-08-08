@@ -14,4 +14,4 @@ inc_dirs :=
 use_libs := -lcaseEF -lcaseGCaps2
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
-add_ldflags := -DEF_add_ldflags
+add_ldflags := --fatal-warnings

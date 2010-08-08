@@ -13,4 +13,4 @@ inc_dirs :=
 use_libs :=
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
-add_cppflags := -DCAPS2=1
+add_cppflags := -DCAPS=2

@@ -13,4 +13,4 @@ inc_dirs :=
 use_libs :=
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
-add_cppflags := -Dfoo=libcaseCD_add_cppflags
+add_cppflags := -DlibcaseCD_add_cppflags
