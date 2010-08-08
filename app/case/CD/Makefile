@@ -14,4 +14,4 @@ inc_dirs :=
 use_libs := -lcaseCD -lcaseGCaps1
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
-add_cflags := -DCD_add_cflags
+add_cflags := -fno-builtin

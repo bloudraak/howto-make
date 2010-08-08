@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "caseG/g.h"
 
-#if   defined( CAPS1 )
+#if   CAPS == 1
 #define GOODBYE printf("GoodBye from %s.\n", __FILE__);
-#elif defined( CAPS2 )
+#elif CAPS == 2
 #define GOODBYE printf("GOODBYE from %s.\n", __FILE__);
 #else
 #define GOODBYE printf("Goodbye from %s.\n", __FILE__);

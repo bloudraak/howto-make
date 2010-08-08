@@ -13,4 +13,4 @@ inc_dirs :=
 use_libs := $(ABG)
 
 # Add, Remove, and Edit Directory-Specific Variables and Values
-add_cppflags := -Dfoo=AB_add_cppflags
+add_cppflags := -DAB_add_cppflags

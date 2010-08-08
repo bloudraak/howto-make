@@ -34,7 +34,7 @@ use_libs :=
 ## lib/foo/bar.h, which is co-generated with lib/foo/bar.cpp from
 ## lib/foo/bar.xpp, then set other_gsrc as shown below.
 other_gsrc   := lib/foo/bar.h
-add_cppflags := -Dfoo=Abh_cppflags
+add_cppflags := -DAbh_cppflags
 ## NOTE TO THE DEVELOPER:  This file is only for setting directory-specific
 ## variables such as the flags, which are edited with the add_/rem_/set_ syntax,
 ## as well as type, name, inc_dirs, use_libs, and other_gsrc.  If you assign a
