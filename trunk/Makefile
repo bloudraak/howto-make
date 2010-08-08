@@ -118,9 +118,13 @@
 # of the source tree.  Compiler-option-dependency does not result in a new
 # OBJDIR.
 #
-# This make requires that each lib and each app has its own dir which contains
-# all of its source files and a Makefile.  The dir can also contain subdirs and
-# non-source files.
+# If each lib and each app has its own dir which contains all of its source
+# files and a Makefile, then the source files will be determined automatically
+# and the src variable should be left undefined (empty) in the subdir Makefiles.
+# But a lib dir can contain multiple libs and an app dir can contain multiple
+# apps (see HTMMM/README.src).  In this case, the src variable needs to be
+# defined only in the dirs that contain multiple libs or apps.  In either case,
+# a lib or app dir can also contain subdirs and non-source files.
 #
 # This file resides in the root dir of the source tree.  In the documentation,
 # the file locations are written relative to the root dir, except for the subdir
@@ -181,7 +185,7 @@ $(call assert,$(call eq,1,$(words $(O) $(G) $(P) $(CT))),Must only set one of O 
 # Get the lists of Makefiles and extra Makefiles.
 mfls := $(sort $(shell $(FIND) $(SRCDIR)/app $(SRCDIR)/lib -name Makefile))
 efls := $(sort $(shell $(FIND) $(SRCDIR)/app $(SRCDIR)/lib -name 'Makefile.[0-9]*'))
-include $(SRCDIR)/HTMMM/fltr1.mk # Filter the Makefiles and extra Makefiles if T is 1 or 3
+include $(SRCDIR)/HTMMM/fltr1.mk # Filter the Makefiles if T is 1 or 3
 
 # Make the dirs in $(OBJDIR), and use these dirs to set vpath directives, unless
 # the goal (the command-line target) is clean or one of its variants.

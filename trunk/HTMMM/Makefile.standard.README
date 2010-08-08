@@ -9,19 +9,22 @@ srchup = $(or $(wildcard $1/$2),$(if $(notdir $(abspath $1)),$(call srchup,../$1
 include $(call srchup,.,HTMMM/chdir.mk)
 endif
 
-# Edit Values Only
+# Edit Values Only (all of this dir's source files are used if src is undefined)
 ## Set the type (app or lib) and name (without a path) of this dir's final
 ## target.  The name value for a static lib should be libName.a and for a
 ## dynamic lib should be libName.so or libName.dll for single-architecture
 ## builds or libName.$(shared) for multi-architecture builds.  This Makefile is
 ## for building a single app or lib from this dir.  All of the source files must
-## be in this dir.  You may use the inc_dirs variables defined in HTMMM/ivars.mk
-## and the use_libs variables defined in HTMMM/lvars.mk.  The private inc_dirs
-## should be specified relative to the root dir (SRCDIR) since the
-## "-I$(SRCDIR)/" prefix will be added by load_macro in HTMMM/macrs.mk.  The
-## use_libs should be specified with the "-l" notation (see HTMMM/lvars.mk).
+## be in this dir.  To build multiple apps or libs from this dir, you must use
+## the src variable in each Makefile (see HTMMM/README.src).  You may use the
+## inc_dirs variables defined in HTMMM/ivars.mk and the use_libs variables
+## defined in HTMMM/lvars.mk.  The private inc_dirs should be specified relative
+## to the root dir (SRCDIR) since the "-I$(SRCDIR)/" prefix will be added by
+## load_macro in HTMMM/macrs.mk.  The use_libs should be specified with the "-l"
+## notation (see HTMMM/lvars.mk).
 type     := app
 name     := Abh
+src      :=
 inc_dirs :=
 use_libs :=
 

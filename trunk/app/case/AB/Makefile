@@ -6,9 +6,10 @@ srchup = $(or $(wildcard $1/$2),$(if $(notdir $(abspath $1)),$(call srchup,../$1
 include $(call srchup,.,HTMMM/chdir.mk)
 endif
 
-# Edit Values Only
+# Edit Values Only (all of this dir's source files are used if src is undefined)
 type     := app
 name     := AB
+src      :=
 inc_dirs :=
 use_libs := $(ABG)
 

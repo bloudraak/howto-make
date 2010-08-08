@@ -1,14 +1,23 @@
 This Makefile system supports multiple libs per lib dir and multiple apps per
-app dir.  In any dir with multiple libs or apps, the src variable must be used
-in all of the Makefiles, and no source file can be specified in more than one
-src variable.  This Makefile will report an error if either rule is not
-followed.
+app dir.  In any dir with multiple libs or apps
+- One Makefile is required for each lib or app
+  - The first one is named Makefile
+  - The names of the additional ones must match the filename substitution
+    (wildcard) pattern Makefile.[0-9]* (the pattern is configurable in the
+    top-level Makefile)
+- The src variable must be used in each Makefile
+- The source files must be from the same dir as the Makefile
+- No source file can be specified in more than one src variable
 
-Instead, soft links should be used to ensure that every source file is compiled
-from it's Makefile's dir and that every source file has a unique name (including
-its path relative to the root dir).  Thus, when soft-linking to a file in the
-same dir, the file must be renamed, but when soft-linking to a file from another
-dir, the file does not need to be renamed.
+This Makefile system will report an error if these rules are not followed.  The
+error occurs when replicates (multiple occurrences of the same target) are found
+(see HTMMM/repck.mk).
+
+Soft links should be used to avoid replicates, i.e., to ensure that every source
+file is compiled from it's Makefile's dir and that every source file has a
+unique name (including its path relative to the root dir).  Thus, when
+soft-linking to a file in the same dir, the file must be renamed, but when
+soft-linking to a file from another dir, the file does not need to be renamed.
 
 If it is desired to use the same source file in multiple apps in an app dir,
 then the source file should be part of a lib (or two libs if different flags
@@ -25,18 +34,19 @@ system.
 
 Case 1, Using a Source File from Another Dir
   Traditional Makefile System
-    If it is built in the other dir, you'll need a special rule to rename the
-	target or to use a subdir (to avoid having a double target)
-    If it is built in the current dir, you'll need a special rule
+  - If it is built in the other dir, use a special rule to rename the target or
+    to create and use a subdir (to avoid having a double target)
+  - If it is built in the current dir, use a special rule (since the source file
+    is from another dir)
   This Makefile System
-    Use a soft link
+  - Use a soft link
 
 Case 2, Using the Same Source File Multiple Times in a Dir
   Traditional Makefile System
-    You'll need a special rule to rename the target or to use a subdir (to avoid
-	having a double target)
+  - Use a special rule to rename the target or to create and use a subdir (to
+    avoid having a double target)
   This Makefile System
-    Use a soft link with a rename
+  - Use a soft link with a rename
 
 The use of the src variable is shown in
 
@@ -47,6 +57,10 @@ app/case/EF/Makefile.2
 lib/goodbye/caseG/Makefile
 lib/goodbye/caseG/Makefile.2
 
-Each of the three dirs above contains a soft link, as does
+Each of the three demo dirs above contains a soft link, as does
 
 lib/goodbye/caseGCaps2
+
+Finally, it should be noted that the src variable can be used when it is desired
+to build a single lib or app in a dir using only a subset of the dir's source
+files.

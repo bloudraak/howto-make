@@ -8,3 +8,7 @@ used to build an app or a lib, use
 
    HTMMM/Makefile.notarget.README
    HTMMM/Makefile.notarget.template
+
+For additional help on the use of the src variable, see
+
+   HTMMM/README.src
