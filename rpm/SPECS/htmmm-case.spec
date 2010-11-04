@@ -32,7 +32,11 @@ make -C %{_topdir}/../.. -f Install.mk PKG=%{name}
 /usr/local/bin/AB
 /usr/local/bin/Abh
 /usr/local/bin/CD
+/usr/local/bin/CDAlt1
+/usr/local/bin/CDAlt2
 /usr/local/bin/EF
+/usr/local/bin/HILoose
+/usr/local/bin/HITight
 /usr/local/lib/libcaseEF.so.0.0
 
 %clean

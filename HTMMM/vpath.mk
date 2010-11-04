@@ -8,7 +8,15 @@
 # The x86_64 system library paths are appended to the vpath directives here
 # since there is currently no easy way to set these in Make (see
 # http://savannah.gnu.org/bugs/?16276).
+# The following two lines show one way to put libs in the app dir:
+#OBJDIRlibDirs  := $(shell $(FIND) lib -type d)
+#OBJDIRlibDirs  += app/case/HI/lib
+# The following two lines show a second way to put libs in the app dir:
+#OBJDIRlibDirs  := $(shell $(FIND) lib -type d)
+#OBJDIRlibDirs  += $(shell $(FIND) app -type d -name lib)
+# The following two lines show a third way to put libs in the app dir:
 OBJDIRlibDirs  := $(shell $(FIND) lib -type d)
+OBJDIRlibDirs  += $(subst ../,,$(dir $(shell $(GREP) -l '^type \+:= \+lib$$' ../app)))
 SRCDIRlibDirs  :=
 externalLibDir := $(SRCDIR)/lib/external
 x86_64LibDirs  := /lib64 /usr/lib64 /usr/local/lib64
