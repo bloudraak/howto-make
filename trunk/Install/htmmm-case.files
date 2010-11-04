@@ -6,4 +6,6 @@ usr/local/bin += $(OBJDIR)/app/case/EF/EF
 usr/local/bin += $(OBJDIR)/app/case/EF/CDAlt2
 usr/local/bin += $(OBJDIR)/app/case/HI/HILoose
 usr/local/bin += $(OBJDIR)/app/case/HI/HITight
+usr/local/bin += $(OBJDIR)/app/case/JK/JKLoose
+usr/local/bin += $(OBJDIR)/app/case/JK/JKTight
 usr/local/lib += $(sort $(shell [ ! -e $(OBJDIR)/lib ] || find $(OBJDIR)/lib -name '*.so.*' -type f))
