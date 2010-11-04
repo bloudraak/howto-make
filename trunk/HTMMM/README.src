@@ -61,6 +61,13 @@ Each of the three demo dirs above contains a soft link, as does
 
 lib/goodbye/caseGCaps2
 
+The use of the src variable is also shown in
+
+app/case/HI/Makefile
+app/case/HI/Makefile.2
+
+No soft links are required in the demo dir above.
+
 Finally, it should be noted that the src variable can be used when it is desired
 to build a single lib or app in a dir using only a subset of the dir's source
 files.
