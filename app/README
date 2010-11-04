@@ -13,6 +13,8 @@ Following are the apps and their location relative to this dir.
   case/EF           CDAlt2
   case/HI           HILoose
   case/HI           HITight
+  case/JK           JKLoose
+  case/JK           JKTight
   CPP               hello
   gSrc/lex          count_words
   gSrc/lexAndYacc   calc
@@ -30,9 +32,12 @@ EF uses a shared lib (libcaseEF.so or libcaseEF.dll).
 CDAlt2 shows that an app dir can use a source file from another dir (see
 HTMMM/README.src).
 
-HILoose and HITight use a lib from a subdir.  This shows that lib dirs can be
-near app dirs for convenience, i.e., they are not required to be under the
-top-level lib dir.
+HILoose and HITight use a lib from a subdir of the case/HI app dir.  This shows
+that lib dirs can be near app dirs for convenience, i.e., they are not required
+to be under the top-level lib dir.
+
+JKLoose and JKTight use a lib from their own dir (the case/JK app dir).  This
+shows that libs can be built within app dirs for convenience.
 
 AB and Abh use libcaseG.a, CD and CDAlt1 use libcaseGCaps1.a, and EF and CDAlt2
 use libcaseGCaps2.a (see HTMMM/README.src).

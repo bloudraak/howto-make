@@ -37,6 +37,8 @@ make -C %{_topdir}/../.. -f Install.mk PKG=%{name}
 /usr/local/bin/EF
 /usr/local/bin/HILoose
 /usr/local/bin/HITight
+/usr/local/bin/JKLoose
+/usr/local/bin/JKTight
 /usr/local/lib/libcaseEF.so.0.0
 
 %clean
