@@ -4,8 +4,8 @@
 # combination with architecture-specific files such as /etc/redhat-release and
 # /usr/bin/isainfo (SunOS).
 # Get the kernel name
-kernelName=`uname --kernel-name`
+kernelName=`uname -s`
 # Get the machine hardware name
-machine=`uname --machine`
+machine=`uname -m`
 # Return the arch
 echo $kernelName.$machine
