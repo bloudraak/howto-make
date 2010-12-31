@@ -6,7 +6,6 @@
 FIND     := $(SRCDIR)/HTMMM/Utils/wcfind
 FIXDEP   := $(SRCDIR)/HTMMM/Utils/fixdepS
 GREP     := $(SRCDIR)/HTMMM/Utils/wcgrep
-LDCONFIG := /sbin/ldconfig -n .
 LEX      := $(lex)
 LN       := ln -sf
 MV       := mv -f
