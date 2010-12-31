@@ -23,7 +23,7 @@ FORCE   : ;
 	$(call if_Q,ar_a_o)
 %.so    :
 	$(call if_Q,c_so_o)
-	$(Q)cd $(@D); $(LDCONFIG)
+	$(Q)cd $(@D); $(LN) $(@F).$(SOREALVER) $(@F).$(SOVER)
 	$(Q)cd $(@D); $(LN) $(@F).$(SOVER) $(@F)
 %.dll   :
 	$(call if_Q,c_dll_o)
