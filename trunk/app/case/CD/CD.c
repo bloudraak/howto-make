@@ -14,7 +14,7 @@ int main(void)
 	char x;
 	printf("Enter c or d: ");
 	scanf("%c", &x);
-	x = tolower(x);
+	x = (char) tolower((int) x);
 	switch (x) {
 	case 'c':
 		c_hello();

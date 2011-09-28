@@ -8,7 +8,7 @@ int main(void)
 	char x;
 	printf("Enter h or i: ");
 	scanf("%c", &x);
-	x = tolower(x);
+	x = (char) tolower((int) x);
 	switch (x) {
 	case 'h':
 		h_hello();
