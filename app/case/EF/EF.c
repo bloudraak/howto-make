@@ -9,7 +9,7 @@ int main(void)
 	char x;
 	printf("Enter e or f: ");
 	scanf("%c", &x);
-	x = tolower(x);
+	x = (char) tolower((int) x);
 	switch (x) {
 	case 'e':
 		e_hello();
