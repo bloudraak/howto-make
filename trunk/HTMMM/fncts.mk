@@ -59,10 +59,11 @@ edit_flags =                                            \
 # there are prerequisites newer than the target or the command has changed.
 if_changed_dep =                                   \
   $(if                                             \
-    $(strip $?                                     \
-      $(filter-out FORCE $(wildcard $^),$^)        \
-      $(filter-out $(cmd_$1),$(cmd_$@))            \
-      $(filter-out $(cmd_$@),$(cmd_$1))),          \
+    $(filter-out FORCE,                            \
+      $(strip $?                                   \
+        $(filter-out $(wildcard $^),$^)            \
+        $(filter-out $(cmd_$1),$(cmd_$@))          \
+        $(filter-out $(cmd_$@),$(cmd_$1)))),       \
     @set -e;                                       \
     $(if $($(quiet)cmd_$1),                        \
       echo '$(subst ','\'',$($(quiet)cmd_$1))';)   \
