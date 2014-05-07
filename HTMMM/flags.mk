@@ -71,7 +71,7 @@ endif
 CFLAGS   := $(SFLAGS) $(WFLAGS) $(OFLAGS) $(GFLAGS) $(PFLAGS) $(TFLAGS) $(EFLAGS)
 CXXFLAGS := $(SXXFLAGS) $(WXXFLAGS) $(OXXFLAGS) $(GXXFLAGS) $(PXXFLAGS) $(TXXFLAGS) $(EXXFLAGS)
 
-# Support for 32-bit/64-bit cross-compilation (see HTMMM/chdir.mk for more
+# Support for 32-bit/64-bit cross-compilation (see HTMMM/OBJDIR.mk for more
 # information).
 ifdef BIT
   CFLAGS   += $(MBIT)
