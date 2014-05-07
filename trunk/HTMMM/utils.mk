@@ -27,3 +27,7 @@ fixdep  := $(or $(call seq,$(shell ls $(FIXDEP)),$(FIXDEP)),$(error Error: the f
 # returns $(FIXDEP), so the seq comparison is still accurate even though the
 # executable is named $(FIXDEP).exe.  In these environments, "ls $(FIXDEP).exe"
 # would return $(FIXDEP).exe.
+#
+# The wildcard issue has been fixed in GNU Make 3.82, so if you are using GNU
+# Make 3.82 or newer, you can comment out or remove the previous command,
+# uncomment the one above it, and update or remove this documentation.
