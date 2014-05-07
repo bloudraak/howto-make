@@ -1,15 +1,15 @@
-# Copyright 2006, 2007, 2008, 2009, 2010, Steven A. Siano
+# Copyright 2006-2014, Steven A. Siano
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #----- Begin Summary
@@ -75,15 +75,16 @@
 #
 # For quiet mode, use "make Q=1"; for silent mode, use "make -s".
 #
-# For debug mode, use "make D=1", then "h" for help at the debugger break.
-# Also, for troubleshooting,
+# For debug mode, use "make D=1", then "h" for help at the debugger break
+# (debug mode is for debugging the Makefile system).  Also, for troubleshooting,
 #   make .print.<var> # output the value of var,   e.g., make .print.apps
 #   make .debug.<var> # output debug info for var, e.g., make .print.libs
 #
 # For optimization, use "make O=<level>", where level is 0, 1, 2, 3, or s.
 #
 # For debugging, use "make G=<level>", where level is the optimization level
-# (not the debugging level).
+# (not the debugging level).  Here, debugging refers to storing debugging
+# information in object files.
 #
 # For profiling, use "make P=<level>", where level is the optimization level
 # (not the profiling level).  Profiling implies debugging.
