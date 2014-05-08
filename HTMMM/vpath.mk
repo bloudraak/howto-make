@@ -5,9 +5,6 @@
 #   $(SRCDIR)/lib/external/libfoo.a ->
 #   /dir/subdir/libfoo.a
 #
-# The x86_64 system library paths are appended to the vpath directives here
-# since there is currently no easy way to set these in Make (see
-# http://savannah.gnu.org/bugs/?16276).
 # The following two lines show one way to put libs in the app dir:
 #OBJDIRlibDirs  := $(shell $(FIND) lib -type d)
 #OBJDIRlibDirs  += app/case/HI/lib
@@ -19,11 +16,27 @@ OBJDIRlibDirs  := $(shell $(FIND) lib -type d)
 OBJDIRlibDirs  += $(subst ../,,$(dir $(shell $(GREP) -l '^type \+:= \+lib$$' ../app)))
 SRCDIRlibDirs  :=
 externalLibDir := $(SRCDIR)/lib/external
-x86_64LibDirs  := /lib64 /usr/lib64 /usr/local/lib64
-ifeq (x86_64,$(shell uname -i))
-  vpath %.$(shared) $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir) $(x86_64LibDirs)
-  vpath %.a         $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir) $(x86_64LibDirs)
-else
-  vpath %.$(shared) $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir)
-  vpath %.a         $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir)
+vpath %.$(shared) $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir)
+vpath %.a         $(OBJDIRlibDirs) $(SRCDIRlibDirs) $(externalLibDir)
+
+# The x86_64 system library paths are appended to the vpath directives since
+# there is currently no easy way to set these in Make (see
+# http://savannah.gnu.org/bugs/?16276).
+hardwarePlatform := $(shell uname -i)
+x86_64LibDirs    := /lib64 /usr/lib64 /usr/local/lib64
+ifeq ($(hardwarePlatform),x86_64)
+  vpath %.$(shared) $(x86_64LibDirs)
+  vpath %.a         $(x86_64LibDirs)
+endif
+
+# Lib dirs specific to the hardware platform are appended to the vpath
+# directives when the operating system is GNU/Linux.  This is not necessary if
+# Make was compiled to search for libs in the dirs specific to the hardware
+# platform.
+operatingSystem := $(shell uname -o)
+ifeq ($(operatingSystem),GNU/Linux)
+  vpath %.$(shared) /lib/$(hardwarePlatform)-linux-gnu
+  vpath %.$(shared) /usr/lib/$(hardwarePlatform)-linux-gnu
+  vpath %.a         /lib/$(hardwarePlatform)-linux-gnu
+  vpath %.a         /usr/lib/$(hardwarePlatform)-linux-gnu
 endif
